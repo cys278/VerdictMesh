@@ -10,12 +10,12 @@ const legendContainer = document.getElementById('agent-legend');
 const tooltip = document.getElementById('insight-tooltip');
 
 // --- State Management ---
-let globalSentenceState = {}; 
+let globalSentenceState = {};
 let activeAgentFilters = {};
 let tooltipTimeout;
 
-const HOVER_DELAY_MS = 800; 
-const CURSOR_OFFSET = 5;    
+const HOVER_DELAY_MS = 800;
+const CURSOR_OFFSET = 5;
 
 // --- Helper: Convert Hex to RGB ---
 const hexToRgb = (hex) => {
@@ -27,13 +27,27 @@ const hexToRgb = (hex) => {
 
 // --- Drag and Drop Logic ---
 dropZone.addEventListener('click', () => fileInput.click());
-dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.classList.add('dragover'); });
+
+dropZone.addEventListener('keydown', event => {
+    if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        fileInput.click();
+    }
+});
+
+dropZone.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    dropZone.classList.add('dragover');
+});
+
 dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+
 dropZone.addEventListener('drop', (e) => {
     e.preventDefault();
     dropZone.classList.remove('dragover');
     if (e.dataTransfer.files.length) handleFileUpload(e.dataTransfer.files[0]);
 });
+
 fileInput.addEventListener('change', (e) => {
     if (e.target.files.length) handleFileUpload(e.target.files[0]);
 });
@@ -50,7 +64,7 @@ async function handleFileUpload(file) {
             body: formData
         });
         const data = await response.json();
-        
+
         if (data.status === 'success') {
             dropZone.style.display = 'none';
             leftPanel.classList.add('active');
@@ -58,7 +72,7 @@ async function handleFileUpload(file) {
             controls.style.display = 'block';
 
             documentContent.innerHTML = data.sentences.map(para => {
-                const paraText = para.sentences.map(s => 
+                const paraText = para.sentences.map(s =>
                     `<span class="document-sentence" id="sent-${s.sentence_id}">${s.sentence} </span>`
                 ).join('');
                 return `<p>${paraText}</p>`;
@@ -74,11 +88,11 @@ async function handleFileUpload(file) {
 dispatchBtn.addEventListener('click', () => {
     dispatchBtn.disabled = true;
     dispatchBtn.innerText = "Analyzing concurrently...";
-    feed.innerHTML = ''; 
-    
+    feed.innerHTML = '';
+
     legendContainer.style.display = 'none';
     legendContainer.innerHTML = '<div style="font-weight: 600; margin-bottom: 4px;">Active Perspectives</div>';
-    
+
     globalSentenceState = {};
     activeAgentFilters = {};
 
@@ -89,23 +103,24 @@ dispatchBtn.addEventListener('click', () => {
 
         if (payload.status === 'engine_started' || payload.status === 'aggregator_started') {
             addFeedStatus(payload.message);
-        } 
-        else if (payload.status === 'agent_report') {
+        } else if (payload.status === 'agent_report') {
             const agentData = payload.data;
             addAgentCard(agentData);
             registerAgentInLegend(agentData.agent, agentData.color);
-            processAgentHighlights(agentData.agent, agentData.color, agentData.insight, agentData.selected_sentence_ids);
-        }
-        else if (payload.status === 'conflict_report') {
+            processAgentHighlights(
+                agentData.agent,
+                agentData.color,
+                agentData.insight,
+                agentData.selected_sentence_ids
+            );
+        } else if (payload.status === 'conflict_report') {
             addConflictReport(payload.data);
-        }
-        else if (payload.status === 'error') {
+        } else if (payload.status === 'error') {
             eventSource.close();
             dispatchBtn.innerText = 'Dispatch Parallel Agents';
             dispatchBtn.disabled = false;
             addFeedStatus(`Audit failed: ${payload.message}`);
-        }
-        else if (payload.status === 'complete') {
+        } else if (payload.status === 'complete') {
             eventSource.close();
             dispatchBtn.innerText = "Audit Complete";
             addFeedStatus("Workflow Terminated Successfully.");
@@ -146,7 +161,7 @@ function addConflictReport(consensus) {
     const el = document.createElement('div');
     el.className = 'card conflict-card';
     let html = `<div class="card-title" style="color: #d93025;">Chief Justice Report</div>`;
-    
+
     if (consensus.has_conflicts && consensus.conflicts) {
         html += `<p style="font-weight: 600; margin-bottom: 8px;">${consensus.summary}</p>`;
         consensus.conflicts.forEach(c => {
@@ -158,9 +173,9 @@ function addConflictReport(consensus) {
             `;
         });
     } else {
-         html += `<p>All executive perspectives are aligned. No critical cross-domain conflicts detected.</p>`;
+        html += `<p>All executive perspectives are aligned. No critical cross-domain conflicts detected.</p>`;
     }
-    
+
     el.innerHTML = html;
     feed.appendChild(el);
     rightPanel.scrollTop = rightPanel.scrollHeight;
@@ -214,19 +229,17 @@ function recalculateAllHighlights() {
         if (activeColors.length === 0) {
             sentenceEl.style.background = 'transparent';
             sentenceEl.style.borderBottomColor = 'transparent';
-            sentenceEl.classList.remove('has-highlight'); 
-        } 
-        else if (activeColors.length === 1) {
-            sentenceEl.classList.add('has-highlight'); 
+            sentenceEl.classList.remove('has-highlight');
+        } else if (activeColors.length === 1) {
+            sentenceEl.classList.add('has-highlight');
             const color = activeColors[0];
             sentenceEl.style.background = `rgba(${hexToRgb(color)}, 0.3)`;
             sentenceEl.style.borderBottomColor = color;
-        } 
-        else {
-            sentenceEl.classList.add('has-highlight'); 
+        } else {
+            sentenceEl.classList.add('has-highlight');
             const stripeWidth = 10;
             let gradientStops = [];
-            
+
             activeColors.forEach((color, index) => {
                 const rgba = `rgba(${hexToRgb(color)}, 0.4)`;
                 const start = index * stripeWidth;
@@ -236,7 +249,7 @@ function recalculateAllHighlights() {
 
             const totalWidth = activeColors.length * stripeWidth;
             sentenceEl.style.background = `repeating-linear-gradient(45deg, ${gradientStops.join(', ')} 0, ${gradientStops.join(', ')} ${totalWidth}px)`;
-            sentenceEl.style.borderBottomColor = '#444746'; 
+            sentenceEl.style.borderBottomColor = '#444746';
         }
     }
 }
@@ -245,12 +258,12 @@ function recalculateAllHighlights() {
 documentContent.addEventListener('mouseover', (e) => {
     const sentenceEl = e.target.closest('.document-sentence');
     if (!sentenceEl) return;
-    
+
     const sentenceId = sentenceEl.id.replace('sent-', '');
     const agentsDict = globalSentenceState[sentenceId];
-    
+
     let activeAgentsHtml = '';
-    
+
     if (agentsDict) {
         for (const [agentName, data] of Object.entries(agentsDict)) {
             if (activeAgentFilters[agentName]) {
@@ -267,13 +280,13 @@ documentContent.addEventListener('mouseover', (e) => {
     if (activeAgentsHtml) {
         clearTimeout(tooltipTimeout);
         tooltip.innerHTML = activeAgentsHtml;
-        
-        tooltip.style.visibility = 'hidden'; 
+
+        tooltip.style.visibility = 'hidden';
         tooltip.style.opacity = '0';
-        tooltip.classList.add('visible'); 
-        
+        tooltip.classList.add('visible');
+
         const tooltipRect = tooltip.getBoundingClientRect();
-        
+
         let leftPos = e.pageX + CURSOR_OFFSET;
         let topPos = e.pageY + CURSOR_OFFSET;
 
@@ -287,7 +300,7 @@ documentContent.addEventListener('mouseover', (e) => {
 
         tooltip.style.left = `${leftPos}px`;
         tooltip.style.top = `${topPos}px`;
-        tooltip.style.visibility = ''; 
+        tooltip.style.visibility = '';
         tooltip.style.opacity = '';
     }
 });
@@ -297,7 +310,7 @@ documentContent.addEventListener('mouseout', (e) => {
     if (sentenceEl) {
         tooltipTimeout = setTimeout(() => {
             tooltip.classList.remove('visible');
-        }, HOVER_DELAY_MS); 
+        }, HOVER_DELAY_MS);
     }
 });
 
@@ -308,5 +321,5 @@ tooltip.addEventListener('mouseenter', () => {
 tooltip.addEventListener('mouseleave', () => {
     tooltipTimeout = setTimeout(() => {
         tooltip.classList.remove('visible');
-    }, HOVER_DELAY_MS); 
+    }, HOVER_DELAY_MS);
 });

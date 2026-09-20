@@ -5,11 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VerdictMesh | Document Audit</title>
     <link rel="stylesheet" href="style.css">
+    <script>
+        try {
+            document.documentElement.dataset.theme =
+                localStorage.getItem('verdictmesh-theme') ||
+                (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        } catch (_) {
+            document.documentElement.dataset.theme = 'light';
+        }
+    </script>
 </head>
 <body>
-
-    <header>
-        VerdictMesh | Multi-Agent Document Audit
+    <header class="app-header">
+        <div class="header-brand">
+            <img class="brand-mark" src="verdictmesh-mark.svg" alt="" aria-hidden="true">
+            <span class="brand-name">VerdictMesh</span>
+            <span class="brand-separator" aria-hidden="true"></span>
+            <span class="header-title">Document Audit</span>
+        </div>
+        <div class="header-actions">
+            <span class="header-kicker">Parallel analysis workspace</span>
+            <button id="theme-toggle" class="theme-toggle" type="button"
+                    aria-label="Switch color theme" aria-pressed="false">
+                <span class="theme-icon" aria-hidden="true">☾</span>
+                <span class="theme-label">Dark</span>
+            </button>
+        </div>
     </header>
 
     <main>
@@ -21,10 +42,13 @@
         </div>
 
         <div id="right-panel">
-            <div id="drop-zone">
+            <div id="drop-zone" role="button" tabindex="0"
+                 aria-label="Choose a PDF document">
                 <h3 class="drop-title">Upload Document</h3>
-                <p class="drop-subtitle">Drag & drop a dense PDF lease or contract here to begin the multi-agent audit.</p>
-                <input type="file" id="file-input" accept=".pdf" />
+                <p class="drop-subtitle">
+                    Drag &amp; drop a dense PDF lease or contract here to begin the multi-agent audit.
+                </p>
+                <input type="file" id="file-input" accept=".pdf">
             </div>
 
             <div id="controls">
@@ -33,10 +57,11 @@
 
             <div id="feed"></div>
         </div>
-        
+
         <div id="insight-tooltip" class="insight-tooltip"></div>
     </main>
 
+    <script src="theme.js" defer></script>
     <script src="app.js" defer></script>
 </body>
 </html>

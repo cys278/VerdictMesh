@@ -644,3 +644,131 @@ path { fill: none; stroke: #2e3a4953; stroke-width: 1.2; stroke-dasharray: 6; }
     margin: 0 4px;
     font-weight: 300;
 }
+/* VerdictMesh medical interface */
+:root {
+    color-scheme: light;
+    --bg-main: #f4f8fb;
+    --bg-surface: #ffffff;
+    --text-primary: #14263e;
+    --text-secondary: #586980;
+    --border-light: #dce6ef;
+    --user-bg: #d9f8f4;
+    --user-text: #123c4c;
+    --team-bg: #edf4fb;
+    --team-text: #17304a;
+    --purple-brand: #16266b;
+    --blue-brand: #087e88;
+    --green-brand: #168b69;
+    --brand-gradient: linear-gradient(110deg, #16266b, #0aa8eb);
+    --header-height: 76px;
+}
+
+:root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg-main: #0c1625;
+    --bg-surface: #111f30;
+    --text-primary: #f0f7ff;
+    --text-secondary: #b8cada;
+    --border-light: #314459;
+    --user-bg: #123f48;
+    --user-text: #e3fffc;
+    --team-bg: #1c2c40;
+    --team-text: #e7f2ff;
+    --purple-brand: #eaf4ff;
+    --blue-brand: #5ce3dd;
+    --green-brand: #64d9aa;
+    --brand-gradient: linear-gradient(110deg, #f0f7ff, #5ce3dd);
+}
+
+.header {
+    background: var(--bg-surface);
+    border-bottom: 1px solid var(--border-light);
+    padding-inline: clamp(16px, 3vw, 42px);
+}
+
+.brand-container,
+.header-actions {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+}
+
+.brand-container { gap: 12px; }
+.header-actions { gap: 16px; flex: none; }
+
+.brand-mark {
+    display: block;
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+    object-fit: contain;
+}
+
+.purple-brand { white-space: nowrap; }
+.reset-hint { white-space: nowrap; }
+
+.tagline {
+    color: var(--text-secondary);
+    background: none;
+    -webkit-text-fill-color: currentColor;
+    font-size: 16px;
+    font-weight: 650;
+}
+
+.theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-width: 94px;
+    min-height: 40px;
+    padding: 8px 12px;
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    background: var(--bg-main);
+    color: var(--text-primary);
+    font: 650 13px system-ui, sans-serif;
+    cursor: pointer;
+}
+
+.theme-toggle:hover { border-color: var(--blue-brand); }
+.theme-icon { font-size: 19px; line-height: 1; }
+
+.left-panel { background: var(--bg-main); }
+.right-panel { background: var(--bg-surface); }
+.agent-box { background: var(--bg-surface); border-color: var(--border-light); }
+.node { background: var(--bg-surface); color: var(--text-primary); }
+#n-llm { background: #102d55; color: white; }
+#n-final { background: var(--bg-surface); color: var(--blue-brand); }
+.dropzone { background: var(--bg-surface); border-color: var(--border-light); }
+.term-head, .chat-container, .chat-ui { background: var(--bg-surface); }
+.bubble.system { background: var(--bg-main); color: var(--text-secondary); border-color: var(--border-light); }
+
+.canvas { transform: scale(.85); }
+
+@media (max-width: 1300px) {
+    .canvas { transform: scale(.68); }
+}
+
+@media (max-width: 1100px) {
+    .canvas { transform: scale(.75); }
+}
+
+@media (max-width: 850px) {
+    .canvas { transform: scale(.6); }
+}
+
+@media (max-width: 600px) {
+    :root { --header-height: 68px; }
+    .brand-mark { width: 30px; height: 30px; min-width: 30px; }
+    .brand-container { gap: 8px; }
+    .tagline, .header-divider, .reset-hint, .theme-label { display: none; }
+    .theme-toggle { min-width: 42px; width: 42px; min-height: 42px; padding: 5px; }
+    .canvas { transform: scale(.43); }
+}
+
+button:focus-visible,
+[role="button"]:focus-visible {
+    outline: 3px solid var(--blue-brand);
+    outline-offset: 3px;
+}
