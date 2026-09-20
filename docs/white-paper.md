@@ -1,9 +1,5 @@
 # VerdictMesh: A Technical Architecture for Parallel Isolated Multi-Agent Reasoning
 
-**Engineering white paper**
-
-Prepared August 2026 · github.com/ahmadvh/octochains · v0.6.0 (Beta)
-
 ---
 
 ## Abstract
@@ -278,5 +274,3 @@ Because `execute()` owns the full request loop, tool-calling is unopinionated: a
 VerdictMesh' technical thesis is narrow and specific: for tasks that genuinely decompose into independent sub-problems, run the sub-problems in structurally isolated threads, normalize every possible output shape into one contract, fail loudly and specifically rather than silently, and route everything through exactly one auditable synthesis step. Every mechanism described in this paper, the duplicate-role check, the two-gate failure model, the `<think>` tag stripping, the deterministic weight resolution in `WeightedSynthesizer`, the flat-file Skill parser, exists to make that thesis hold up under real failure conditions rather than only in a demo.
 
 ---
-
-*Code references: github.com/ahmadvh/octochains, `main` branch, `src/octochains/{engine,base,skills,schema}.py` and `src/octochains/aggregators/{conflict_checker,weighted_synthesizer}.py`. Research reference: Kim, Y. et al., "Towards a Science of Scaling Agent Systems," arXiv:2512.08296 (2026).*

@@ -350,6 +350,3 @@ We are actively expanding VerdictMesh from a library into a comprehensive ecosys
 * **Expanded Aggregator Suite:** Out-of-the-box integration for democratic Majority Vote streams, strict Minimax boundary-testing gates, and categorical Classifiers.
 * **Octonodes:** A production-grade visual application interface allowing architects to drag-and-drop parallel topologies, map data hooks, and export automated Python/Rust deployment code.
 * **HITL Gateways:** Native Human-in-the-Loop intercept protocols allowing domain experts to step in at critical decision forks or review aggregated conflict logs before execution.
-## Project origin and license
-
-VerdictMesh adapts the Octochains source originally published by Ahmad Varasteh. The original work and authorship remain identified in `LICENSE`; the original project is at https://github.com/ahmadvh/octochains. The package name and examples in this copy have been renamed.

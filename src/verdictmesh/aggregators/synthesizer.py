@@ -1,10 +1,3 @@
-# ==============================================================================
-# Copyright (c) 2026 Ahmad Varasteh (verdictmesh). All rights reserved.
-#
-# Licensed under the Business Source License 1.1 (the "License");
-# you may not use this file except in compliance with the License.
-#
-# ==============================================================================
 import logging
 from typing import Any, Callable, Optional
 from verdictmesh.base import Aggregator

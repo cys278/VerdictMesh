@@ -48,7 +48,7 @@ Ensure the following are installed:
 Clone the repository:
 
 ```bash
-git clone https://github.com/ahmadvh/05-document-analysis.git
+git clone https://github.com/cys278/VerdictMesh.git
 cd 05-document-analysis
 ```
 
