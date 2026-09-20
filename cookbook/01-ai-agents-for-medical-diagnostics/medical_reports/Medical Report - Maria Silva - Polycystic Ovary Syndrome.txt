@@ -1,0 +1,24 @@
+Medical Case Report
+Patient ID: 100234
+Name: Maria Silva
+Age: 29
+Gender: Female
+Date of Report: 2024-11-20
+
+Chief Complaint:
+The patient presents with irregular menstrual cycles, acne, and increased hair growth on the face and abdomen over the past year.
+
+Medical History:
+Family History: Sister with polycystic ovary syndrome (PCOS).
+Personal Medical History: No significant past medical history.
+Lifestyle Factors: Sedentary lifestyle, high carbohydrate diet.
+Medications: None.
+
+Recent Lab and Diagnostic Results:
+Ultrasound: Enlarged ovaries with multiple small follicles.
+Hormonal Profile: Elevated LH/FSH ratio, elevated testosterone.
+Fasting Glucose: Normal.
+
+Physical Examination Findings:
+Vital Signs: BP 112/70 mmHg, HR 76 bpm, BMI 27.4.
+General Exam: Hirsutism noted.

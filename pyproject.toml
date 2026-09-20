@@ -1,0 +1,62 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "verdictmesh"
+version = "0.7.0"
+description = "An orchestration framework for reliable multi-agent decision-making, parallel isolated reasoning, and consensus aggregation."
+readme = "README.md"
+license = "BUSL-1.1"
+license-files = ["LICENSE"]
+requires-python = ">=3.9"
+authors = [
+    { name="Ahmad", email="ahmad.vh7@gmail.com" }
+]
+keywords = [
+    "multi-agent",
+    "parallel-reasoning",
+    "llm-orchestration",
+    "ai-agents",
+    "consensus",
+    "fault-tolerance",
+    "pydantic",
+    "model-agnostic",
+    "isolated-execution"
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Operating System :: OS Independent",
+    "Typing :: Typed",
+]
+
+dependencies = [
+    "pydantic>=2.0.0",
+]
+
+[project.optional-dependencies]
+openai = ["openai>=1.0.0"]
+litellm = ["litellm>=1.0.0"]
+dev = [
+    "pytest>=7.0.0",
+    "mypy>=1.0.0",
+    "build>=1.0.0"
+]
+
+[project.urls]
+"Homepage" = "https://github.com/cys278/Octochains"
+"Bug Tracker" = "https://github.com/cys278/Octochains/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+verdictmesh = ["*.py"]
+"verdictmesh.agents.skills" = ["**/*.md"]

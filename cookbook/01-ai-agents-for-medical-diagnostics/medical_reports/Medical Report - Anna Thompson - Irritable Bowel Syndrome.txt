@@ -1,0 +1,24 @@
+Medical Case Report
+Patient ID: 100232
+Name: Anna Thompson
+Age: 35
+Gender: Female
+Date of Report: 2024-12-10
+
+Chief Complaint:
+The patient presents with abdominal bloating, irregular bowel movements, and cramping abdominal pain for the past six months.
+
+Medical History:
+Family History: No significant gastrointestinal disease.
+Personal Medical History: Seasonal allergies.
+Lifestyle Factors: Balanced diet, occasional alcohol, no smoking.
+Medications: Antihistamines as needed.
+
+Recent Lab and Diagnostic Results:
+Colonoscopy: No structural abnormalities.
+Stool Studies: Negative for pathogens.
+Blood Tests: Normal CBC, normal CRP.
+
+Physical Examination Findings:
+Vital Signs: BP 118/76 mmHg, HR 74 bpm, BMI 22.0.
+Abdominal Exam: Mild tenderness in left lower quadrant, no rebound.

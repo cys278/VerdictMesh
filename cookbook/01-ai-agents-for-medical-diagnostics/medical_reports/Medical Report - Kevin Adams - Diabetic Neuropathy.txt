@@ -1,0 +1,24 @@
+Medical Case Report
+Patient ID: 100237
+Name: Kevin Adams
+Age: 60
+Gender: Male
+Date of Report: 2025-01-28
+
+Chief Complaint:
+The patient reports burning sensation in feet, numbness, and occasional tingling for the past 8 months.
+
+Medical History:
+Family History: Father with type 2 diabetes.
+Personal Medical History: Type 2 diabetes diagnosed at 52.
+Lifestyle Factors: Smoker, overweight, sedentary.
+Medications: Metformin 1000 mg daily, Insulin (basal).
+
+Recent Lab and Diagnostic Results:
+HbA1c: 8.7%.
+Nerve Conduction Studies: Peripheral neuropathy confirmed.
+Renal Function: Mildly reduced eGFR.
+
+Physical Examination Findings:
+Vital Signs: BP 142/88 mmHg, HR 88 bpm, BMI 31.4.
+Neuro Exam: Decreased sensation in feet to monofilament.

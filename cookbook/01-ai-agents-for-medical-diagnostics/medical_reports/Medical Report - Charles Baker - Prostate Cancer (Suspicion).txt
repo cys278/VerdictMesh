@@ -1,0 +1,24 @@
+Medical Case Report
+Patient ID: 100239
+Name: Charles Baker
+Age: 68
+Gender: Male
+Date of Report: 2025-01-22
+
+Chief Complaint:
+The patient reports progressive difficulty urinating, weak stream, and nocturia over the past year.
+
+Medical History:
+Family History: Father had prostate cancer.
+Personal Medical History: Hypertension.
+Lifestyle Factors: Non-smoker, retired.
+Medications: Hydrochlorothiazide 25 mg daily.
+
+Recent Lab and Diagnostic Results:
+PSA: Elevated (9.5 ng/mL).
+Prostate Ultrasound: Enlarged prostate with nodules.
+Urinalysis: Negative for infection.
+
+Physical Examination Findings:
+Vital Signs: BP 140/86 mmHg, HR 82 bpm, BMI 27.9.
+Rectal Exam: Enlarged, firm prostate.

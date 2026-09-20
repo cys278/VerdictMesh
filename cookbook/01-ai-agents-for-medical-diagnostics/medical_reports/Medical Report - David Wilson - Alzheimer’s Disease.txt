@@ -1,0 +1,24 @@
+Medical Case Report
+Patient ID: 100235
+Name: David Wilson
+Age: 72
+Gender: Male
+Date of Report: 2025-01-03
+
+Chief Complaint:
+The patient complains of progressive memory loss, difficulty managing daily tasks, and disorientation for the past two years.
+
+Medical History:
+Family History: Mother had dementia.
+Personal Medical History: Hypertension, hyperlipidemia.
+Lifestyle Factors: Retired, no smoking, occasional alcohol.
+Medications: Simvastatin 20 mg daily, Amlodipine 5 mg daily.
+
+Recent Lab and Diagnostic Results:
+MRI Brain: Cortical atrophy, especially temporal lobes.
+Mini-Mental State Exam (MMSE): Score 19/30.
+Blood Tests: Normal vitamin B12, thyroid function.
+
+Physical Examination Findings:
+Vital Signs: BP 135/82 mmHg, HR 80 bpm, BMI 24.7.
+Neurological Exam: Impaired short-term memory, normal motor strength.

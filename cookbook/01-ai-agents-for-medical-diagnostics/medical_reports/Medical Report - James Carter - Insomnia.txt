@@ -1,0 +1,23 @@
+Medical Case Report
+Patient ID: 100233
+Name: James Carter
+Age: 48
+Gender: Male
+Date of Report: 2025-02-02
+
+Chief Complaint:
+The patient reports increasing difficulty initiating sleep, frequent nighttime awakenings, and daytime fatigue for the past year.
+
+Medical History:
+Family History: Mother with depression.
+Personal Medical History: Hypertension (controlled).
+Lifestyle Factors: High stress occupation, high caffeine intake.
+Medications: Lisinopril 10 mg daily.
+
+Recent Lab and Diagnostic Results:
+Sleep Study: Decreased sleep efficiency, no apnea detected.
+Blood Tests: Normal thyroid function, glucose within normal range.
+
+Physical Examination Findings:
+Vital Signs: BP 128/80 mmHg, HR 78 bpm, BMI 25.1.
+General Exam: Appears fatigued, but otherwise normal.

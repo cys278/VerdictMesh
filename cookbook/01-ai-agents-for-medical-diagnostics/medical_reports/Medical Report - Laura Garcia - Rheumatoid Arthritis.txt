@@ -1,0 +1,24 @@
+Medical Case Report
+Patient ID: 100236
+Name: Laura Garcia
+Age: 51
+Gender: Female
+Date of Report: 2025-02-14
+
+Chief Complaint:
+The patient presents with joint stiffness and pain in hands and knees, worse in the morning, lasting over one hour.
+
+Medical History:
+Family History: Mother with rheumatoid arthritis.
+Personal Medical History: Hypothyroidism.
+Lifestyle Factors: Non-smoker, moderate exercise.
+Medications: Levothyroxine 75 mcg daily.
+
+Recent Lab and Diagnostic Results:
+Rheumatoid Factor: Positive.
+Anti-CCP: Elevated.
+X-ray: Joint space narrowing in fingers.
+
+Physical Examination Findings:
+Vital Signs: BP 124/82 mmHg, HR 82 bpm, BMI 26.5.
+Musculoskeletal Exam: Swelling and tenderness in MCP joints.

@@ -1,0 +1,24 @@
+Medical Case Report
+Patient ID: 100231
+Name: Robert Miller
+Age: 63
+Gender: Male
+Date of Report: 2025-01-15
+
+Chief Complaint:
+The patient complains of persistent cough with sputum production, shortness of breath, and wheezing, especially in the mornings, for the past two years.
+
+Medical History:
+Family History: Father died of lung cancer at age 70.
+Personal Medical History: Chronic obstructive pulmonary disease (COPD) diagnosed at 60.
+Lifestyle Factors: Smoker (40 pack-years), occasional alcohol, sedentary.
+Medications: Salbutamol inhaler (as needed), Tiotropium (daily).
+
+Recent Lab and Diagnostic Results:
+Pulmonary Function Test: FEV1 reduced to 55% predicted.
+Chest X-ray: Hyperinflated lungs, flattened diaphragms.
+CBC: Normal.
+
+Physical Examination Findings:
+Vital Signs: BP 130/85 mmHg, HR 90 bpm, BMI 26.8.
+Respiratory Exam: Prolonged expiration, wheezing on auscultation.

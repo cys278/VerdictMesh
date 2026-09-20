@@ -1,0 +1,23 @@
+Medical Case Report
+Patient ID: 100238
+Name: Olivia White
+Age: 24
+Gender: Female
+Date of Report: 2025-03-05
+
+Chief Complaint:
+The patient presents with recurrent sore throat, enlarged tonsils, and difficulty swallowing for the past year.
+
+Medical History:
+Family History: Non-contributory.
+Personal Medical History: Frequent upper respiratory infections.
+Lifestyle Factors: Non-smoker, occasional alcohol.
+Medications: None.
+
+Recent Lab and Diagnostic Results:
+Throat Culture: Group A streptococcus detected.
+CBC: Mild leukocytosis.
+
+Physical Examination Findings:
+Vital Signs: BP 110/70 mmHg, HR 80 bpm, BMI 21.9.
+ENT Exam: Enlarged, inflamed tonsils with exudate.
