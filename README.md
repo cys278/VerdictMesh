@@ -38,7 +38,7 @@ VerdictMesh is built on the architectural principles validated in the study **["
 
 ## Architecture & Anatomy
 
-https://github.com/user-attachments/assets/ede601fd-0a08-451f-b783-67d854767bb8
+https://github.com/user-attachments/assets/663369cc-98ce-4950-8614-a88219020a4c
 
 For the full technical breakdown, engine internals, aggregator implementations, and the research this design is grounded in, see the [Technical White Paper](docs/white-paper.md).
 
