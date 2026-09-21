@@ -7,8 +7,6 @@ name = "verdictmesh"
 version = "0.7.0"
 description = "An orchestration framework for reliable multi-agent decision-making, parallel isolated reasoning, and consensus aggregation."
 readme = "README.md"
-license = "BUSL-1.1"
-license-files = ["LICENSE"]
 requires-python = ">=3.9"
 keywords = [
     "multi-agent",
