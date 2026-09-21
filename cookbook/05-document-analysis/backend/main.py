@@ -2,6 +2,8 @@
 import os
 import json
 import asyncio
+import uuid
+from fastapi import HTTPException
 from fastapi import FastAPI, File, UploadFile
 from fastapi.responses import StreamingResponse
 from fastapi.middleware.cors import CORSMiddleware
@@ -34,7 +36,7 @@ frontend_dir = os.path.join(base_dir, "..", "frontend")
 app.mount("/frontend", StaticFiles(directory=frontend_dir), name="frontend")
 
 
-current_document_context = []
+document_sessions = {}
 
 # NVIDIA's hosted chat endpoint uses the OpenAI-compatible SDK.
 api_key = os.getenv("NVIDIA_API_KEY")
@@ -116,16 +118,26 @@ class ExpertAgent(Agent):
 # --- API ROUTES ---
 @app.post("/api/upload")
 async def upload_document(file: UploadFile = File(...)):
-    global current_document_context
-    file_bytes = await file.read()
+    file_bytes = await file.read(10 * 1024 * 1024 + 1)
+    if len(file_bytes) > 10 * 1024 * 1024:
+        raise HTTPException(status_code=413, detail="PDF must be under 10 MB.")
+    if not file_bytes.startswith(b"%PDF-"):
+        raise HTTPException(status_code=400, detail="Upload a PDF file.")
 
-    sentence_objects = parse_pdf_to_sentences(file_bytes)
-    current_document_context = sentence_objects
+    try:
+        sentence_objects = parse_pdf_to_sentences(file_bytes)
+    except Exception:
+        raise HTTPException(status_code=400, detail="Could not read this PDF.")
 
-    return {"status": "success", "sentences": sentence_objects}
-
-
-async def run_verdictmesh_stream():
+    document_id = uuid.uuid4().hex
+    document_sessions[document_id] = sentence_objects
+    return {
+        "status": "success",
+        "document_id": document_id,
+        "sentences": sentence_objects,
+    }
+    
+async def run_verdictmesh_stream(document_context):
     global current_document_context
     yield f"data: {json.dumps({'status': 'engine_started', 'message': 'Booting thread-isolated experts via NVIDIA...'})}\n\n"
 
@@ -206,13 +218,18 @@ async def run_verdictmesh_stream():
 
 
 @app.get("/api/analyze")
-async def analyze_document():
+async def analyze_document(document_id: str):
+    document_context = document_sessions.pop(document_id, None)
+    if document_context is None:
+        raise HTTPException(status_code=404, detail="Upload a document first.")
+
     async def safe_stream():
         try:
-            async for event in run_verdictmesh_stream():
+            async for event in run_verdictmesh_stream(document_context):
                 yield event
         except Exception as exc:
             yield f"data: {json.dumps({'status': 'error', 'message': str(exc)})}\n\n"
+
     return StreamingResponse(safe_stream(), media_type="text/event-stream")
 
 

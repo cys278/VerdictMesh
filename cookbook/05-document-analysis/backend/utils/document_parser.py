@@ -1,6 +1,7 @@
 # backend/utils/document_parser.py
 import io
 import re
+import html
 import fitz  # PyMuPDF
 
 def parse_pdf_to_sentences(file_bytes: bytes) -> list:
@@ -23,7 +24,7 @@ def parse_pdf_to_sentences(file_bytes: bytes) -> list:
             for line in b["lines"]:
                 line_text = ""
                 for span in line["spans"]:
-                    text = span["text"]
+                    text = html.escape(span["text"]) 
                     
                     # Detect bold text either by font name or the internal bold flag
                     is_bold = "bold" in span["font"].lower() or "black" in span["font"].lower()
