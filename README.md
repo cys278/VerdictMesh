@@ -1,3 +1,11 @@
+<p align="center">
+  <img
+    src="docs/assets/verdictmesh-mark.svg"
+    alt="VerdictMesh logo"
+    width="180"
+  />
+</p>
+
 # VerdictMesh
 
 **VerdictMesh** is a lightweight Python framework for **parallel, and isolated multi-agent reasoning and consensus**. It is purpose-built for complex, decomposable tasks that require independent, multi-perspective analysis without logical contamination.
