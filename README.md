@@ -341,12 +341,3 @@ Check out the `/cookbook/` directory for full examples of these aggregators in a
 * `/src/verdictmesh/agents/skilled_agent.py`: `SkilledAgent`, the concrete, ready-to-use Agent that powers all official presets.
 * `/src/verdictmesh/agents/skills/`: Bundled SKILL.md knowledge packs powering the official presets.
 * `/src/verdictmesh/aggregators/`: Standardized synthesis and deterministic auditing logic.
-
-## Future Roadmap
-
-We are actively expanding VerdictMesh from a library into a comprehensive ecosystem for high-stakes reasoning:
-
-* **Expanded Preset Catalog:** Community-contributed Skills reviewed and merged into the official preset library.
-* **Expanded Aggregator Suite:** Out-of-the-box integration for democratic Majority Vote streams, strict Minimax boundary-testing gates, and categorical Classifiers.
-* **Octonodes:** A production-grade visual application interface allowing architects to drag-and-drop parallel topologies, map data hooks, and export automated Python/Rust deployment code.
-* **HITL Gateways:** Native Human-in-the-Loop intercept protocols allowing domain experts to step in at critical decision forks or review aggregated conflict logs before execution.
