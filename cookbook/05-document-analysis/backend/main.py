@@ -138,7 +138,7 @@ async def upload_document(file: UploadFile = File(...)):
     }
     
 async def run_verdictmesh_stream(document_context):
-    global current_document_context
+    
     yield f"data: {json.dumps({'status': 'engine_started', 'message': 'Booting thread-isolated experts via NVIDIA...'})}\n\n"
 
     # 1. Initialize Agents with the NVIDIA callable
@@ -180,7 +180,7 @@ async def run_verdictmesh_stream(document_context):
     engine = Engine(agents=agents, aggregator=boss, require_all_agents=True)
 
     # 4. Fire the complete execution pipeline
-    document_payload = json.dumps(current_document_context)
+    document_payload = json.dumps(document_context)
 
     loop = asyncio.get_running_loop()
     execution_results = await loop.run_in_executor(None, engine.run, document_payload, True)
